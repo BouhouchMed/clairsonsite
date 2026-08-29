@@ -1,6 +1,7 @@
 node_modules/
 .next/
 out/
+.deploy-gh-pages/
 
 .env*
 !.env.example

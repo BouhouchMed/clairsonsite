@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { withBasePath } from "./site-paths";
 
 const languageOptions = [
   ["fr", "FR"],
@@ -36,12 +37,12 @@ export default function SiteHeader({ language, setLanguage, activePath = "/", sh
   const [isScrolled, setScrolled] = useState(false);
   const isRtl = language !== "fr";
   const t = copy[language] || copy.fr;
-  const logoSrc = isRtl ? "/clairson-logoar.svg" : "/clairson-logo.svg";
-  const centersHref = `/nous-trouver?lang=${language}`;
-  const devicesHref = `/appareils?lang=${language}`;
-  const hearingTestHref = `/test-auditif?lang=${language}`;
-  const homeHref = `/?lang=${language}#accueil`;
-  const servicesHref = `/?lang=${language}#services`;
+  const logoSrc = withBasePath(isRtl ? "/clairson-logoar.svg" : "/clairson-logo.svg");
+  const centersHref = withBasePath(`/nous-trouver?lang=${language}`);
+  const devicesHref = withBasePath(`/appareils?lang=${language}`);
+  const hearingTestHref = withBasePath(`/test-auditif?lang=${language}`);
+  const homeHref = withBasePath(`/?lang=${language}#accueil`);
+  const servicesHref = withBasePath(`/?lang=${language}#services`);
   const navItems = [
     [t.nav[0], homeHref, "/"],
     [t.nav[1], devicesHref, "/appareils"],

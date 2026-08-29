@@ -1,6 +1,7 @@
 "use client";
 
 import SiteHeader from "../../components/site-header";
+import { withBasePath } from "../../components/site-paths";
 import { useEffect, useState } from "react";
 
 const centers = [
@@ -181,7 +182,7 @@ export default function FindCenterPage() {
   const [selectedCenterName, setSelectedCenterName] = useState("");
   const isRtl = language !== "fr";
   const copy = translations[language];
-  const centersHref = `/nous-trouver?lang=${language}`;
+  const centersHref = withBasePath(`/nous-trouver?lang=${language}`);
   const selectedCenter = centers.find((center) => center.name === selectedCenterName) || null;
 
   useEffect(() => {

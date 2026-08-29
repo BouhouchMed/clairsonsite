@@ -2,7 +2,8 @@
 const repoName = process.env.GITHUB_REPOSITORY?.split("/")[1] || "";
 const isGithubPagesBuild = process.env.GITHUB_ACTIONS === "true";
 const isUserOrOrgPage = repoName.endsWith(".github.io");
-const basePath = isGithubPagesBuild && repoName && !isUserOrOrgPage ? `/${repoName}` : "";
+const manualBasePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+const basePath = manualBasePath || (isGithubPagesBuild && repoName && !isUserOrOrgPage ? `/${repoName}` : "");
 
 const nextConfig = {
   output: "export",

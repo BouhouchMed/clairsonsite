@@ -1,5 +1,7 @@
 "use client";
 
+import { withBasePath } from "./site-paths";
+
 const footerCopy = {
   fr: {
     footerText: "Votre partenaire de confiance pour une meilleure audition au quotidien.",
@@ -40,7 +42,7 @@ function Icon({ children, className = "" }) {
 export default function SiteFooter({ language }) {
   const isRtl = language !== "fr";
   const t = footerCopy[language] || footerCopy.fr;
-  const footerLogoSrc = isRtl ? "/clairson-logoardark.png" : "/clairson-logodark.png";
+  const footerLogoSrc = withBasePath(isRtl ? "/clairson-logoardark.png" : "/clairson-logodark.png");
 
   return (
     <footer className="w-full border-t border-outline-variant bg-night pt-section-v-desktop pb-stack-lg font-body-md text-body-md text-on-secondary">

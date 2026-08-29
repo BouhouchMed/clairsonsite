@@ -2,6 +2,7 @@
 
 import SiteHeader from "../../components/site-header";
 import SiteFooter from "../../components/site-footer";
+import { withBasePath } from "../../components/site-paths";
 import { motion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
 
@@ -179,7 +180,7 @@ function Icon({ children, className = "" }) {
 }
 
 function fullImage(path) {
-  return path;
+  return withBasePath(path);
 }
 
 function DevicesPage() {
@@ -231,8 +232,8 @@ function DevicesPage() {
     window.history.replaceState(null, "", url.toString());
   };
 
-  const centersHref = `/nous-trouver?lang=${language}`;
-  const testHref = `/test-auditif?lang=${language}`;
+  const centersHref = withBasePath(`/nous-trouver?lang=${language}`);
+  const testHref = withBasePath(`/test-auditif?lang=${language}`);
 
   return (
     <main className={`min-h-screen bg-surface text-on-surface ${isRtl ? "font-arabic" : ""}`} dir={isRtl ? "rtl" : "ltr"} lang={language === "fr" ? "fr" : "ar"}>

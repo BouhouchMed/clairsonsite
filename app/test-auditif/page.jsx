@@ -2,6 +2,7 @@
 
 import SiteHeader from "../../components/site-header";
 import SiteFooter from "../../components/site-footer";
+import { withBasePath } from "../../components/site-paths";
 import { useEffect, useMemo, useState } from "react";
 
 const frequencies = [500, 1000, 2000, 4000];
@@ -95,7 +96,7 @@ function FlowHeader({ copy, phase, progress, onBack }) {
             {phase !== "prep" && phase !== "intro" && phase !== "results" && (
               <Button variant="secondary" onClick={onBack}>{copy.back}</Button>
             )}
-            <a className="flex h-12 items-center rounded-full border border-outline-variant px-5 font-bold text-primary" href="/">{copy.home}</a>
+            <a className="flex h-12 items-center rounded-full border border-outline-variant px-5 font-bold text-primary" href={withBasePath("/")}>{copy.home}</a>
           </div>
         </div>
         <div className="mb-3 h-2 overflow-hidden rounded-full bg-outline-variant">
@@ -263,6 +264,7 @@ export default function HearingTestPage() {
   const currentGainPercent = Math.round(volumeToGain(currentVolume, calibration) * 100);
   const progress = phase === "test" ? Math.round((step / totalSteps) * 100) : phase === "results" ? 100 : phase === "form" ? 35 : phase === "prep" ? 18 : 5;
   const canStart = form.firstName && form.lastName && form.email && form.phone && form.privacy;
+  const centersHref = withBasePath(`/nous-trouver?lang=${language}`);
 
   const thresholds = useMemo(() => buildThresholds(answers), [answers]);
   const scores = useMemo(() => {

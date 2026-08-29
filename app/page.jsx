@@ -1,6 +1,7 @@
 "use client";
 
 import SiteFooter from "../components/site-footer";
+import { withBasePath } from "../components/site-paths";
 import { AnimatePresence, MotionConfig, motion } from "framer-motion";
 import { useEffect, useMemo, useRef, useState } from "react";
 
@@ -407,10 +408,13 @@ export default function Home() {
   const testimonialsRef = useRef(null);
   const t = translations[language];
   const isRtl = language !== "fr";
-  const logoSrc = isRtl ? "/clairson-logoar.svg" : "/clairson-logo.svg";
-  const hearingTestHref = `${links.hearingTest}?lang=${language}`;
-  const centersHref = `${links.centers}?lang=${language}`;
-  const devicesHref = `/appareils?lang=${language}`;
+  const logoSrc = withBasePath(isRtl ? "/clairson-logoar.svg" : "/clairson-logo.svg");
+  const hearingTestHref = withBasePath(`${links.hearingTest}?lang=${language}`);
+  const centersHref = withBasePath(`${links.centers}?lang=${language}`);
+  const devicesHref = withBasePath(`/appareils?lang=${language}`);
+  const heroImagePath = withBasePath(heroImage);
+  const brandVideoPath = withBasePath(brandVideo);
+  const centerVideoPath = withBasePath(centerVideo);
   const directionClass = isRtl ? "text-right" : "text-left";
   const navItems = [
     [t.nav[0], "#accueil"],
@@ -584,7 +588,7 @@ export default function Home() {
           <motion.div className="relative flex min-h-[640px] w-full items-center overflow-hidden p-4 sm:p-8 lg:p-10" initial={{ opacity: 0.9 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
             <div
               className={`absolute inset-0 bg-cover bg-center ${isRtl ? "scale-x-[-1]" : "scale-x-100"}`}
-              style={{ backgroundImage: `url('${heroImage}')` }}
+              style={{ backgroundImage: `url('${heroImagePath}')` }}
             />
             <div className={`absolute inset-0 ${isRtl ? "bg-gradient-to-l" : "bg-gradient-to-r"} from-surface-container-lowest/45 via-surface/18 to-transparent`} />
             <motion.div className={`relative z-10 w-full max-w-lg bg-[rgba(252,254,254,0.75)] backdrop-blur-[1px] p-5 sm:p-8 rounded-[20px] shadow-soft border-2 border-secondary/80 ${directionClass}`} initial={{ opacity: 0, x: isRtl ? 28 : -28 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.65 }}>
@@ -625,7 +629,7 @@ export default function Home() {
                 muted
                 playsInline
                 preload="metadata"
-                src={brandVideo}
+                src={brandVideoPath}
               />
             </div>
           </div>
@@ -695,7 +699,7 @@ export default function Home() {
                 muted
                 playsInline
                 preload="metadata"
-                src={centerVideo}
+                src={centerVideoPath}
               />
             </div>
             <div className={directionClass}>
