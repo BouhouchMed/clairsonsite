@@ -1,0 +1,4 @@
+:HL["/clairsonsite/_next/static/chunks/2pyob272rt4qh.css","style"]
+:HL["https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;600&family=Manrope:wght@700;800&display=swap","style"]
+:HL["https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"nous-trouver","param":null,"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}},"staleTime":300,"buildId":"CRl4ZKMeUuLcicr_a7eVH"}
